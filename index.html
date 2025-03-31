@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de Gestão de Processos</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: Verdana, sans-serif;
@@ -25,6 +26,7 @@
       padding: 10px;
       font-size: 16px;
       margin-bottom: 20px;
+      margin-right: 10px;
     }
     table {
       width: 100%;
@@ -61,6 +63,10 @@
     ul {
       padding-left: 20px;
     }
+    canvas {
+      max-width: 500px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -71,6 +77,9 @@
   <div class="painel">
     <label for="unidade-select"><strong>Selecione a Unidade:</strong></label>
     <select id="unidade-select" onchange="atualizarTabela()"></select>
+
+    <label for="processo-select"><strong>Selecione o Processo:</strong></label>
+    <select id="processo-select" onchange="atualizarGrafico()"></select>
 
     <h2>Resumo da Unidade</h2>
     <table>
@@ -104,8 +113,10 @@
         <p id="macroprocessos">--</p>
       </div>
     </div>
+    <canvas id="graficoProcesso"></canvas>
     <a class="link-manual" href="#">Acessar Manuais e Legislação</a>
   </div>
+
   <script>
     const dados = [
       { unidade: "Assessoria de Participação Social e Diversidade", servidores: 3 },
@@ -138,6 +149,7 @@
     };
 
     const unidadeSelect = document.getElementById("unidade-select");
+    const processoSelect = document.getElementById("processo-select");
     const tabela = document.getElementById("tabela-unidades");
 
     dados.forEach((item, index) => {
@@ -147,26 +159,57 @@
       unidadeSelect.appendChild(option);
     });
 
+    for (const nome in processos) {
+      const option = document.createElement("option");
+      option.value = nome;
+      option.textContent = nome;
+      processoSelect.appendChild(option);
+    }
+
     function atualizarTabela() {
       const idx = unidadeSelect.value;
       const item = dados[idx];
       let processosHTML = "";
-
-      for (const [nome, passos] of Object.entries(processos)) {
-        processosHTML += `<strong>${nome}</strong><br>`;
-      }
-
       let pontosHTML = "";
       for (const [nome, passos] of Object.entries(processos)) {
+        processosHTML += `<strong>${nome}</strong><br>`;
         pontosHTML += `<strong>${nome}</strong><ul>` + passos.map(p => `<li>${p}</li>`).join("") + "</ul>";
       }
-
       tabela.innerHTML = `<tr>
         <td>${item.unidade}</td>
         <td>${item.servidores}</td>
         <td>${processosHTML}</td>
         <td>${pontosHTML}</td>
       </tr>`;
+      atualizarGrafico();
+    }
+
+    function atualizarGrafico() {
+      const processoSelecionado = processoSelect.value;
+      const etapas = processos[processoSelecionado];
+      const etapasConcluidas = Math.floor(Math.random() * (etapas.length + 1));
+      const percentual = (etapasConcluidas / etapas.length * 100).toFixed(1);
+
+      const ctx = document.getElementById('graficoProcesso').getContext('2d');
+      if (window.chart) window.chart.destroy();
+      window.chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Concluído', 'Pendente'],
+          datasets: [{
+            data: [etapasConcluidas, etapas.length - etapasConcluidas],
+            backgroundColor: ['#00D000', '#FF0000']
+          }]
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: `Execução do Processo: ${processoSelecionado} (${percentual}%)`
+            }
+          }
+        }
+      });
     }
 
     atualizarTabela();
