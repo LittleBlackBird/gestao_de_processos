@@ -64,9 +64,14 @@
     ul {
       padding-left: 20px;
     }
+    .grafico-container {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0;
+    }
     canvas {
-      max-width: 500px;
-      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
     }
   </style>
 </head>
@@ -82,23 +87,28 @@
     <label for="processo-select"><strong>Selecione o Tipo de Processo:</strong></label>
     <select id="processo-select" onchange="atualizarTabela()"></select>
 
+    <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
+    <select id="processo-individual-select" onchange="atualizarGrafico()"></select>
+
     <h2>Resumo da Unidade</h2>
     <table>
       <thead>
         <tr>
           <th>Unidade</th>
-          <th>Nº de Servidores</th>
           <th>Tipo de Processo</th>
           <th>Processos Individuais</th>
+          <th>Nº de Servidores</th>
         </tr>
       </thead>
       <tbody id="tabela-unidades"></tbody>
     </table>
 
+    <div class="grafico-container">
+      <canvas id="graficoProcesso"></canvas>
+    </div>
+
     <h2>Indicadores</h2>
     <div class="indicadores" id="indicadores-container"></div>
-
-    <canvas id="graficoProcesso"></canvas>
 
     <a class="link-manual" href="#">Acessar Manuais e Legislação</a>
   </div>
@@ -115,52 +125,29 @@
 
     const estrutura = {
       "DIÁRIAS E PASSAGENS": [
-        {
-          nome: "Viagem Brasília - Conferência A",
-          concluidos: 4,
-          etapas: [
-            "1- Solicitação de autorização de viagem",
-            "2- Instrução processual",
-            "3- Cotação de passagens",
-            "4- Procedimentos SCDP",
-            "5- Emissão de passagens aéreas",
-            "6- Pagamento de diárias",
-            "7- Prestação de Contas"
-          ]
-        },
-        {
-          nome: "Missão Rio - Evento B",
-          concluidos: 2,
-          etapas: [
-            "1- Solicitação de autorização de viagem",
-            "2- Instrução processual",
-            "3- Cotação de passagens",
-            "4- Procedimentos SCDP",
-            "5- Emissão de passagens aéreas",
-            "6- Pagamento de diárias",
-            "7- Prestação de Contas"
-          ]
-        }
+        { nome: "Viagem Brasília - Conferência A", concluidos: 4, etapas: ["Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"] },
+        { nome: "Missão Rio - Evento B", concluidos: 2, etapas: ["Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"] }
       ],
       "TED": [
-        {
-          nome: "TED Cultura Digital",
-          concluidos: 6,
-          etapas: [
-            "1- Manifestação de interesse",
-            "2 - Abertura e cadastramento do Programa no TransfereGov.",
-            "3 - Cadastramento do Plano de Ação",
-            "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
-            "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
-            "6 - Assinatura do TED",
-            "7 - Descentralização orçamentária e financeira"
-          ]
-        }
+        { nome: "TED Cultura Digital", concluidos: 6, etapas: ["Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"] }
       ]
     };
 
+    const objetivos = [
+      "1. Consolidar o Sistema Nacional de Cultura, com a ativação da presença das políticas culturais nos municípios e estados.",
+      "10. Promover a apropriação social das tecnologias e ambiente digitais para impulsionar a cultura digital e suas possibilidades de expressão, produção, difusão e fruição",
+      "12. Criar marcos e instrumentos legais para institucionalizar políticas culturais"
+    ];
+
+    const entregas = [
+      "Ampliação dos programas especiais da Rouanet",
+      "Brasil das Artes - Política Nacional das Artes",
+      "Cessão “Casa de Afonso Arinos” -expo acervo do AMLB e atividades do PPGMA"
+    ];
+
     const unidadeSelect = document.getElementById("unidade-select");
     const processoSelect = document.getElementById("processo-select");
+    const processoIndividualSelect = document.getElementById("processo-individual-select");
     const tabela = document.getElementById("tabela-unidades");
     const indicadores = document.getElementById("indicadores-container");
 
@@ -178,64 +165,71 @@
       processoSelect.appendChild(option);
     }
 
+    objetivos.forEach(obj => {
+      indicadores.innerHTML += `<div class="indicador"><strong>Objetivo Estratégico:</strong><select><option>${obj}</option></select></div>`;
+    });
+
+    entregas.forEach(entrega => {
+      indicadores.innerHTML += `<div class="indicador"><strong>Entrega Prioritária:</strong><select><option>${entrega}</option></select></div>`;
+    });
+
     function atualizarTabela() {
       const unidade = dados[unidadeSelect.value];
       const tipo = processoSelect.value;
-      const processosIndividuais = estrutura[tipo];
+      const processosIndividuais = estrutura[tipo] || [];
 
-      let processosHTML = `<strong>${tipo}</strong><ul>` +
-        processosIndividuais.map(p => `<li>${p.nome}</li>`).join("") + "</ul>";
+      processoIndividualSelect.innerHTML = "";
+      processosIndividuais.forEach((proc, idx) => {
+        const opt = document.createElement("option");
+        opt.value = idx;
+        opt.textContent = proc.nome;
+        processoIndividualSelect.appendChild(opt);
+      });
+
+      const processosHTML = `<ul>` + processosIndividuais.map(p => `<li>${p.nome}</li>`).join("") + "</ul>";
 
       tabela.innerHTML = `<tr>
         <td>${unidade.unidade}</td>
-        <td>${unidade.servidores}</td>
         <td>${tipo}</td>
         <td>${processosHTML}</td>
+        <td>${unidade.servidores}</td>
       </tr>`;
 
+      atualizarGrafico();
       atualizarIndicadores(tipo);
-      atualizarGrafico(tipo);
     }
 
     function atualizarIndicadores(tipo) {
-      indicadores.innerHTML = "";
-      const totalEtapas = estrutura[tipo]?.[0]?.etapas.length || 0;
-      const tempoEstimadoDias = totalEtapas * 5;
-
-      indicadores.innerHTML = `
-        <div class="indicador">
-          <strong>Tempo Médio de Tramitação:</strong>
-          <p>${tempoEstimadoDias} dias</p>
-        </div>
-        <div class="indicador">
-          <strong>Relação com Estratégia:</strong>
-          <p>--</p>
-        </div>
-        <div class="indicador">
-          <strong>Produtos Esperados:</strong>
-          <p>--</p>
-        </div>
-        <div class="indicador">
-          <strong>Macroprocessos Relacionados:</strong>
-          <p>--</p>
-        </div>`;
+      const etapas = estrutura[tipo]?.[0]?.etapas.length || 0;
+      const dias = etapas * 5;
+      indicadores.innerHTML = `<div class="indicador"><strong>Tempo Médio de Tramitação:</strong><p>${dias} dias</p></div>
+      <div class="indicador"><strong>Relação com Estratégia:</strong>
+        <label>Objetivo:</label><select>${objetivos.map(o => `<option>${o}</option>`).join('')}</select>
+        <label>Entrega:</label><select>${entregas.map(e => `<option>${e}</option>`).join('')}</select>
+      </div>
+      <div class="indicador"><strong>Macroprocessos Relacionados:</strong><p>--</p></div>`;
     }
 
-    function atualizarGrafico(tipo) {
+    function atualizarGrafico() {
+      const tipo = processoSelect.value;
+      const idx = processoIndividualSelect.value;
+      const processo = estrutura[tipo]?.[idx];
+      if (!processo) return;
+
       const ctx = document.getElementById('graficoProcesso').getContext('2d');
-      const processo = estrutura[tipo][0];
-      const etapasTotal = processo.etapas.length;
-      const etapasConcluidas = processo.concluidos;
-
-      const percentual = ((etapasConcluidas / etapasTotal) * 100).toFixed(1);
-
       if (window.chart) window.chart.destroy();
+
+      const concluido = processo.concluidos;
+      const total = processo.etapas.length;
+      const restante = total - concluido;
+      const percent = ((concluido / total) * 100).toFixed(1);
+
       window.chart = new Chart(ctx, {
         type: 'doughnut',
         data: {
           labels: ['Concluído', 'Pendente'],
           datasets: [{
-            data: [etapasConcluidas, etapasTotal - etapasConcluidas],
+            data: [concluido, restante],
             backgroundColor: ['#00D000', '#FF0000']
           }]
         },
@@ -243,7 +237,7 @@
           plugins: {
             title: {
               display: true,
-              text: `Execução: ${processo.nome} (${percentual}%)`
+              text: `${processo.nome} - Execução: ${percent}%`
             }
           }
         }
