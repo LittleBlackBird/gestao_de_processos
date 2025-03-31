@@ -9,6 +9,12 @@
 </head>
 <body>
   <div class="painel">
+    <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
+    <select id="tipo-processo-select"></select>
+
+    <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
+    <select id="processo-individual-select"></select>
+
     <div class="grafico-container">
       <canvas id="graficoProcesso"></canvas>
     </div>
@@ -40,45 +46,92 @@
         {
           "nome": "DIÁRIAS E PASSAGENS - Processo A",
           "concluidos": 3,
-          "etapas": [
-            "1- Solicitação de autorização de viagem",
-            "2- Instrução processual",
-            "3- Cotação de passagens",
-            "4- Procedimentos SCDP",
-            "5- Emissão de passagens aéreas",
-            "6-  Pagamento de diárias",
-            "7- Prestação de Contas"
-          ]
+          "etapas": ["Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"]
+        },
+        {
+          "nome": "DIÁRIAS E PASSAGENS - Processo B",
+          "concluidos": 2,
+          "etapas": ["Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"]
+        }
+      ],
+      "TED": [
+        {
+          "nome": "TED - Processo A",
+          "concluidos": 4,
+          "etapas": ["Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"]
+        },
+        {
+          "nome": "TED - Processo B",
+          "concluidos": 1,
+          "etapas": ["Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"]
         }
       ]
     };
 
-    const tipo = "DIÁRIAS E PASSAGENS";
-    const processo = estrutura[tipo][0];
+    const tipoSelect = document.getElementById('tipo-processo-select');
+    const processoSelect = document.getElementById('processo-individual-select');
     const ctx = document.getElementById('graficoProcesso').getContext('2d');
-    const concluido = processo.concluidos;
-    const total = processo.etapas.length;
-    const restante = total - concluido;
-    const percent = ((concluido / total) * 100).toFixed(1);
+    let chart;
 
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Concluído', 'Pendente'],
-        datasets: [{
-          data: [concluido, restante],
-          backgroundColor: ['#00D000', '#FF0000']
-        }]
-      },
-      options: {
-        plugins: {
-          title: {
-            display: true,
-            text: `${processo.nome} - Execução: ${percent}%`
+    function atualizarTipos() {
+      tipoSelect.innerHTML = '';
+      Object.keys(estrutura).forEach(tipo => {
+        const option = document.createElement('option');
+        option.value = tipo;
+        option.textContent = tipo;
+        tipoSelect.appendChild(option);
+      });
+      atualizarProcessos();
+    }
+
+    function atualizarProcessos() {
+      const tipo = tipoSelect.value;
+      const processos = estrutura[tipo] || [];
+      processoSelect.innerHTML = '';
+      processos.forEach((proc, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = proc.nome;
+        processoSelect.appendChild(option);
+      });
+      desenharGrafico();
+    }
+
+    function desenharGrafico() {
+      const tipo = tipoSelect.value;
+      const idx = processoSelect.value;
+      const processo = estrutura[tipo][idx];
+      const concluido = processo.concluidos;
+      const total = processo.etapas.length;
+      const restante = total - concluido;
+      const percent = ((concluido / total) * 100).toFixed(1);
+
+      if (chart) chart.destroy();
+
+      chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Concluído', 'Pendente'],
+          datasets: [{
+            data: [concluido, restante],
+            backgroundColor: ['#00D000', '#FF0000']
+          }]
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: `${processo.nome} - Execução: ${percent}%`
+            }
           }
         }
-      }
-    });
+      });
+    }
+
+    tipoSelect.addEventListener('change', atualizarProcessos);
+    processoSelect.addEventListener('change', desenharGrafico);
+
+    atualizarTipos();
   </script>
 </body>
 </html>
