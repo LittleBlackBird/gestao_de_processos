@@ -4,18 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de Gestão de Processos</title>
+  <link rel="stylesheet" href="estilo_painel_processos.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    .grafico-container {
-      display: flex;
-      justify-content: center;
-      margin: 40px 0;
-    }
-    canvas {
-      width: 25%;
-      max-width: 300px;
-    }
-  </style>
 </head>
 <body>
   <div class="painel">
@@ -23,7 +13,6 @@
       <canvas id="graficoProcesso"></canvas>
     </div>
 
-    <!-- A caixa de Relação com a Estratégia, agora com dropdowns internos -->
     <div class="indicador">
       <strong>Relação com Estratégia:</strong>
       <div>
@@ -60,50 +49,36 @@
             "6-  Pagamento de diárias",
             "7- Prestação de Contas"
           ]
-        },
-        {
-          "nome": "DIÁRIAS E PASSAGENS - Processo B",
-          "concluidos": 2,
-          "etapas": [
-            "1- Solicitação de autorização de viagem",
-            "2- Instrução processual",
-            "3- Cotação de passagens",
-            "4- Procedimentos SCDP",
-            "5- Emissão de passagens aéreas",
-            "6-  Pagamento de diárias",
-            "7- Prestação de Contas"
-          ]
-        }
-      ],
-      "TED": [
-        {
-          "nome": "TED - Processo A",
-          "concluidos": 3,
-          "etapas": [
-            "1- Manifestação de interesse ",
-            "2 - Abertura e cadastramento do Programa no TransfereGov. ",
-            "3 - Cadastramento do Plano de Ação ",
-            "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
-            "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
-            "6 - Assinatura do TED ",
-            "7 - Descentralização orçamentária e financeira"
-          ]
-        },
-        {
-          "nome": "TED - Processo B",
-          "concluidos": 2,
-          "etapas": [
-            "1- Manifestação de interesse ",
-            "2 - Abertura e cadastramento do Programa no TransfereGov. ",
-            "3 - Cadastramento do Plano de Ação ",
-            "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
-            "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
-            "6 - Assinatura do TED ",
-            "7 - Descentralização orçamentária e financeira"
-          ]
         }
       ]
     };
+
+    const tipo = "DIÁRIAS E PASSAGENS";
+    const processo = estrutura[tipo][0];
+    const ctx = document.getElementById('graficoProcesso').getContext('2d');
+    const concluido = processo.concluidos;
+    const total = processo.etapas.length;
+    const restante = total - concluido;
+    const percent = ((concluido / total) * 100).toFixed(1);
+
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Concluído', 'Pendente'],
+        datasets: [{
+          data: [concluido, restante],
+          backgroundColor: ['#00D000', '#FF0000']
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: `${processo.nome} - Execução: ${percent}%`
+          }
+        }
+      }
+    });
   </script>
 </body>
 </html>
