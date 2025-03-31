@@ -6,9 +6,19 @@
   <title>Painel de Gestão de Processos</title>
   <link rel="stylesheet" href="estilo_painel_processos.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
   <div class="painel">
+    <h1>Painel de Gestão de Processos</h1>
+
+    <label for="unidade-select"><strong>Unidade:</strong></label>
+    <select id="unidade-select">
+      <option>Coordenação-Geral 1/GM</option>
+      <option>Coordenação-Geral 2/GM</option>
+      <option>Consultoria Jurídica</option>
+    </select>
+
     <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
     <select id="tipo-processo-select"></select>
 
@@ -37,6 +47,11 @@
           <option>Cessão “Casa de Afonso Arinos”...</option>
         </select>
       </div>
+    </div>
+
+    <div class="indicador">
+      <strong>Resumo da Unidade:</strong>
+      <p id="resumo-unidade">Esta unidade possui 5 servidores e está vinculada a 2 tipos de processos.</p>
     </div>
   </div>
 
@@ -109,22 +124,62 @@
       if (chart) chart.destroy();
 
       chart = new Chart(ctx, {
-        type: 'doughnut',
+        type: 'bar',
         data: {
-          labels: ['Concluído', 'Pendente'],
-          datasets: [{
-            data: [concluido, restante],
-            backgroundColor: ['#00D000', '#FF0000']
-          }]
+          labels: ['Execução'],
+          datasets: [
+            {
+              label: 'Concluído',
+              data: [concluido],
+              backgroundColor: '#00D000'
+            },
+            {
+              label: 'Pendente',
+              data: [restante],
+              backgroundColor: '#FF0000'
+            }
+          ]
         },
         options: {
+          indexAxis: 'y',
+          responsive: true,
           plugins: {
             title: {
               display: true,
               text: `${processo.nome} - Execução: ${percent}%`
+            },
+            legend: {
+              position: 'bottom'
+            },
+            datalabels: {
+              anchor: 'center',
+              align: 'center',
+              color: '#fff',
+              font: {
+                weight: 'bold'
+              },
+              formatter: (value, ctx) => {
+                const datasetIndex = ctx.datasetIndex;
+                const label = ctx.chart.data.datasets[datasetIndex].label;
+                return `${label}: ${value}`;
+              }
             }
+          },
+          scales: {
+            x: {
+              stacked: true,
+              max: total
+            },
+            y: {
+              stacked: true
+            }
+          },
+          animation: {
+            duration: 1000,
+            easing: 'easeOutQuart'
           }
-        }
+        },
+        plugins: [ChartDataLabels]
       });
     }
 
