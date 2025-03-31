@@ -35,6 +35,7 @@
       border: 1px solid #ccc;
       padding: 10px;
       text-align: left;
+      vertical-align: top;
     }
     th {
       background-color: #FFD000;
@@ -57,6 +58,9 @@
       text-decoration: none;
       margin-top: 10px;
     }
+    ul {
+      padding-left: 20px;
+    }
   </style>
 </head>
 <body>
@@ -66,8 +70,7 @@
   </header>
   <div class="painel">
     <label for="unidade-select"><strong>Selecione a Unidade:</strong></label>
-    <select id="unidade-select" onchange="atualizarTabela()">
-    </select>
+    <select id="unidade-select" onchange="atualizarTabela()"></select>
 
     <h2>Resumo da Unidade</h2>
     <table>
@@ -76,10 +79,10 @@
           <th>Unidade</th>
           <th>Nº de Servidores</th>
           <th>Processos Relacionados</th>
+          <th>Pontos de Controle</th>
         </tr>
       </thead>
-      <tbody id="tabela-unidades">
-      </tbody>
+      <tbody id="tabela-unidades"></tbody>
     </table>
 
     <h2>Indicadores</h2>
@@ -113,29 +116,56 @@
       { unidade: "Coordenação-Geral 2/GM", servidores: 4 }
     ];
 
-    const processos = [
-      "Unnamed: 0", "Unnamed: 1", "Unnamed: 2", "Unnamed: 3", "Unnamed: 4",
-      "Unnamed: 5", "Unnamed: 6", "Unnamed: 7", "Unnamed: 8", "Unnamed: 9",
-      "Unnamed: 10", "Unnamed: 11", "Unnamed: 12"
-    ];
+    const processos = {
+      "DIÁRIAS E PASSAGENS": [
+        "1- Solicitação de autorização de viagem",
+        "2- Instrução processual",
+        "3- Cotação de passagens",
+        "4- Procedimentos SCDP",
+        "5- Emissão de passagens aéreas",
+        "6-  Pagamento de diárias",
+        "7- Prestação de Contas"
+      ],
+      "TED": [
+        "1- Manifestação de interesse",
+        "2 - Abertura e cadastramento do Programa no TransfereGov.",
+        "3 - Cadastramento do Plano de Ação",
+        "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+        "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+        "6 - Assinatura do TED",
+        "7 - Descentralização orçamentária e financeira"
+      ]
+    };
 
-    const select = document.getElementById("unidade-select");
+    const unidadeSelect = document.getElementById("unidade-select");
     const tabela = document.getElementById("tabela-unidades");
 
     dados.forEach((item, index) => {
       const option = document.createElement("option");
       option.value = index;
       option.textContent = item.unidade;
-      select.appendChild(option);
+      unidadeSelect.appendChild(option);
     });
 
     function atualizarTabela() {
-      const idx = select.value;
+      const idx = unidadeSelect.value;
       const item = dados[idx];
+      let processosHTML = "";
+
+      for (const [nome, passos] of Object.entries(processos)) {
+        processosHTML += `<strong>${nome}</strong><br>`;
+      }
+
+      let pontosHTML = "";
+      for (const [nome, passos] of Object.entries(processos)) {
+        pontosHTML += `<strong>${nome}</strong><ul>` + passos.map(p => `<li>${p}</li>`).join("") + "</ul>";
+      }
+
       tabela.innerHTML = `<tr>
         <td>${item.unidade}</td>
         <td>${item.servidores}</td>
-        <td>${processos.join(", ")}</td>
+        <td>${processosHTML}</td>
+        <td>${pontosHTML}</td>
       </tr>`;
     }
 
