@@ -44,8 +44,9 @@
     }
     .indicadores {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
+      margin-bottom: 30px;
     }
     .indicador {
       border: 2px solid #00D000;
@@ -78,8 +79,8 @@
     <label for="unidade-select"><strong>Selecione a Unidade:</strong></label>
     <select id="unidade-select" onchange="atualizarTabela()"></select>
 
-    <label for="processo-select"><strong>Selecione o Processo:</strong></label>
-    <select id="processo-select" onchange="atualizarGrafico()"></select>
+    <label for="processo-select"><strong>Selecione o Tipo de Processo:</strong></label>
+    <select id="processo-select" onchange="atualizarTabela()"></select>
 
     <h2>Resumo da Unidade</h2>
     <table>
@@ -87,33 +88,18 @@
         <tr>
           <th>Unidade</th>
           <th>Nº de Servidores</th>
-          <th>Processos Relacionados</th>
-          <th>Pontos de Controle</th>
+          <th>Tipo de Processo</th>
+          <th>Processos Individuais</th>
         </tr>
       </thead>
       <tbody id="tabela-unidades"></tbody>
     </table>
 
     <h2>Indicadores</h2>
-    <div class="indicadores">
-      <div class="indicador">
-        <strong>Tempo Médio de Tramitação:</strong>
-        <p id="tempo-medio">--</p>
-      </div>
-      <div class="indicador">
-        <strong>Relação com Estratégia:</strong>
-        <p id="relacao-estrategia">--</p>
-      </div>
-      <div class="indicador">
-        <strong>Produtos Esperados:</strong>
-        <p id="produtos-esperados">--</p>
-      </div>
-      <div class="indicador">
-        <strong>Macroprocessos Relacionados:</strong>
-        <p id="macroprocessos">--</p>
-      </div>
-    </div>
+    <div class="indicadores" id="indicadores-container"></div>
+
     <canvas id="graficoProcesso"></canvas>
+
     <a class="link-manual" href="#">Acessar Manuais e Legislação</a>
   </div>
 
@@ -127,30 +113,56 @@
       { unidade: "Coordenação-Geral 2/GM", servidores: 4 }
     ];
 
-    const processos = {
+    const estrutura = {
       "DIÁRIAS E PASSAGENS": [
-        "1- Solicitação de autorização de viagem",
-        "2- Instrução processual",
-        "3- Cotação de passagens",
-        "4- Procedimentos SCDP",
-        "5- Emissão de passagens aéreas",
-        "6-  Pagamento de diárias",
-        "7- Prestação de Contas"
+        {
+          nome: "Viagem Brasília - Conferência A",
+          concluidos: 4,
+          etapas: [
+            "1- Solicitação de autorização de viagem",
+            "2- Instrução processual",
+            "3- Cotação de passagens",
+            "4- Procedimentos SCDP",
+            "5- Emissão de passagens aéreas",
+            "6- Pagamento de diárias",
+            "7- Prestação de Contas"
+          ]
+        },
+        {
+          nome: "Missão Rio - Evento B",
+          concluidos: 2,
+          etapas: [
+            "1- Solicitação de autorização de viagem",
+            "2- Instrução processual",
+            "3- Cotação de passagens",
+            "4- Procedimentos SCDP",
+            "5- Emissão de passagens aéreas",
+            "6- Pagamento de diárias",
+            "7- Prestação de Contas"
+          ]
+        }
       ],
       "TED": [
-        "1- Manifestação de interesse",
-        "2 - Abertura e cadastramento do Programa no TransfereGov.",
-        "3 - Cadastramento do Plano de Ação",
-        "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
-        "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
-        "6 - Assinatura do TED",
-        "7 - Descentralização orçamentária e financeira"
+        {
+          nome: "TED Cultura Digital",
+          concluidos: 6,
+          etapas: [
+            "1- Manifestação de interesse",
+            "2 - Abertura e cadastramento do Programa no TransfereGov.",
+            "3 - Cadastramento do Plano de Ação",
+            "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+            "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+            "6 - Assinatura do TED",
+            "7 - Descentralização orçamentária e financeira"
+          ]
+        }
       ]
     };
 
     const unidadeSelect = document.getElementById("unidade-select");
     const processoSelect = document.getElementById("processo-select");
     const tabela = document.getElementById("tabela-unidades");
+    const indicadores = document.getElementById("indicadores-container");
 
     dados.forEach((item, index) => {
       const option = document.createElement("option");
@@ -159,7 +171,7 @@
       unidadeSelect.appendChild(option);
     });
 
-    for (const nome in processos) {
+    for (const nome in estrutura) {
       const option = document.createElement("option");
       option.value = nome;
       option.textContent = nome;
@@ -167,37 +179,63 @@
     }
 
     function atualizarTabela() {
-      const idx = unidadeSelect.value;
-      const item = dados[idx];
-      let processosHTML = "";
-      let pontosHTML = "";
-      for (const [nome, passos] of Object.entries(processos)) {
-        processosHTML += `<strong>${nome}</strong><br>`;
-        pontosHTML += `<strong>${nome}</strong><ul>` + passos.map(p => `<li>${p}</li>`).join("") + "</ul>";
-      }
+      const unidade = dados[unidadeSelect.value];
+      const tipo = processoSelect.value;
+      const processosIndividuais = estrutura[tipo];
+
+      let processosHTML = `<strong>${tipo}</strong><ul>` +
+        processosIndividuais.map(p => `<li>${p.nome}</li>`).join("") + "</ul>";
+
       tabela.innerHTML = `<tr>
-        <td>${item.unidade}</td>
-        <td>${item.servidores}</td>
+        <td>${unidade.unidade}</td>
+        <td>${unidade.servidores}</td>
+        <td>${tipo}</td>
         <td>${processosHTML}</td>
-        <td>${pontosHTML}</td>
       </tr>`;
-      atualizarGrafico();
+
+      atualizarIndicadores(tipo);
+      atualizarGrafico(tipo);
     }
 
-    function atualizarGrafico() {
-      const processoSelecionado = processoSelect.value;
-      const etapas = processos[processoSelecionado];
-      const etapasConcluidas = Math.floor(Math.random() * (etapas.length + 1));
-      const percentual = (etapasConcluidas / etapas.length * 100).toFixed(1);
+    function atualizarIndicadores(tipo) {
+      indicadores.innerHTML = "";
+      const totalEtapas = estrutura[tipo]?.[0]?.etapas.length || 0;
+      const tempoEstimadoDias = totalEtapas * 5;
 
+      indicadores.innerHTML = `
+        <div class="indicador">
+          <strong>Tempo Médio de Tramitação:</strong>
+          <p>${tempoEstimadoDias} dias</p>
+        </div>
+        <div class="indicador">
+          <strong>Relação com Estratégia:</strong>
+          <p>--</p>
+        </div>
+        <div class="indicador">
+          <strong>Produtos Esperados:</strong>
+          <p>--</p>
+        </div>
+        <div class="indicador">
+          <strong>Macroprocessos Relacionados:</strong>
+          <p>--</p>
+        </div>`;
+    }
+
+    function atualizarGrafico(tipo) {
       const ctx = document.getElementById('graficoProcesso').getContext('2d');
+      const processo = estrutura[tipo][0];
+      const etapasTotal = processo.etapas.length;
+      const etapasConcluidas = processo.concluidos;
+
+      const percentual = ((etapasConcluidas / etapasTotal) * 100).toFixed(1);
+
       if (window.chart) window.chart.destroy();
       window.chart = new Chart(ctx, {
         type: 'doughnut',
         data: {
           labels: ['Concluído', 'Pendente'],
           datasets: [{
-            data: [etapasConcluidas, etapas.length - etapasConcluidas],
+            data: [etapasConcluidas, etapasTotal - etapasConcluidas],
             backgroundColor: ['#00D000', '#FF0000']
           }]
         },
@@ -205,7 +243,7 @@
           plugins: {
             title: {
               display: true,
-              text: `Execução do Processo: ${processoSelecionado} (${percentual}%)`
+              text: `Execução: ${processo.nome} (${percentual}%)`
             }
           }
         }
