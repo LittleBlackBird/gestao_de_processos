@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Gestão de Processos</title>
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+      background-color: #FFFFFF; /* Branco-Paz */
+      color: #3C3C3C; /* Cinza-Hárpia */
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #183EFF; /* Azul-Atlântico */
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .painel {
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #FFD000; /* Amarelo-Sol */
+    }
+
+    .indicadores {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .indicador {
+      border: 2px solid #00D000; /* Verde-Amazônia */
+      padding: 15px;
+      background-color: #F8F8F8;
+    }
+
+    .link-manual {
+      background-color: #FF0000; /* Vermelho-Urucum */
+      color: white;
+      padding: 10px;
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gestão de Processos - Ministério da Cultura</h1>
+    <p>Visualização de dados estratégicos e operacionais</p>
+  </header>
+
+  <div class="painel">
+    <h2>Resumo por Unidade</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Unidade</th>
+          <th>Nº de Servidores</th>
+          <th>Nº de Processos</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-unidades">
+        <!-- Dados serão preenchidos dinamicamente -->
+      </tbody>
+    </table>
+
+    <h2>Indicadores</h2>
+    <div class="indicadores">
+      <div class="indicador">
+        <strong>Tempo Médio de Tramitação:</strong>
+        <p id="tempo-medio">--</p>
+      </div>
+      <div class="indicador">
+        <strong>Relação com Estratégia:</strong>
+        <p id="relacao-estrategia">--</p>
+      </div>
+      <div class="indicador">
+        <strong>Produtos Esperados:</strong>
+        <p id="produtos-esperados">--</p>
+      </div>
+      <div class="indicador">
+        <strong>Macroprocessos Relacionados:</strong>
+        <p id="macroprocessos">--</p>
+      </div>
+    </div>
+
+    <a class="link-manual" href="#">Acessar Manuais e Legislação</a>
+  </div>
+
+  <script>
+    // Simulação de preenchimento com dados fictícios
+    const dados = [
+      { unidade: "Coordenação de Projetos", servidores: 12, processos: 4 },
+      { unidade: "Diretoria de Planejamento", servidores: 20, processos: 6 },
+    ];
+
+    const tabela = document.getElementById("tabela-unidades");
+    dados.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${row.unidade}</td><td>${row.servidores}</td><td>${row.processos}</td>`;
+      tabela.appendChild(tr);
+    });
+  </script>
+</body>
+</html>
