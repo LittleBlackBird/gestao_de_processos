@@ -61,6 +61,2312 @@
       </div>
     </div>
   </div>
-  <script src="painel_script.js"></script>
+  <script>
+    const estrutura = {
+  "Corregedoria": {
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 4,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 7,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo C",
+        "concluidos": 7,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 2,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 5,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo C",
+        "concluidos": 5,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo D",
+        "concluidos": 3,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 7,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo C",
+        "concluidos": 6,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo D",
+        "concluidos": 7,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo E",
+        "concluidos": 5,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ]
+  },
+  "Ouvidoria": {
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 3,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 5,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 1,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo D",
+        "concluidos": 4,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo D",
+        "concluidos": 3,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo E",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 5,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 5,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ]
+  },
+  "Assessoria de Participação Social e Diversidade": {
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 4,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 6,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo D",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 1,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo D",
+        "concluidos": 4,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo E",
+        "concluidos": 2,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 2,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo C",
+        "concluidos": 5,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo D",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo E",
+        "concluidos": 1,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ]
+  },
+  "Coordenação-Geral 1/GM": {
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 3,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 3,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo D",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 4,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo C",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 7,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 5,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo C",
+        "concluidos": 1,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo D",
+        "concluidos": 7,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 6,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo C",
+        "concluidos": 7,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 4,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ]
+  },
+  "Coordenação-Geral 2/GM": {
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo D",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo E",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 1,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo D",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 5,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 1,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo D",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 4,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo C",
+        "concluidos": 3,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo D",
+        "concluidos": 1,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo E",
+        "concluidos": 5,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 1,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ]
+  },
+  "Coordenação-Geral 3 /GM": {
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 4,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 2,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 2,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 6,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 1,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo C",
+        "concluidos": 7,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo D",
+        "concluidos": 2,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo E",
+        "concluidos": 3,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 3,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 1,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo C",
+        "concluidos": 3,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo D",
+        "concluidos": 2,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo E",
+        "concluidos": 2,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ],
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo D",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ]
+  },
+  "Coordenação-Geral 4/GM": {
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 2,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 4,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 3,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo C",
+        "concluidos": 3,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo C",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo D",
+        "concluidos": 1,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 3,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo D",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 7,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 4,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ]
+  },
+  "Coordenação-Geral 5/GM": {
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 6,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 2,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo C",
+        "concluidos": 7,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo D",
+        "concluidos": 1,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo E",
+        "concluidos": 4,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 1,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 1,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo C",
+        "concluidos": 4,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 2,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 3,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ],
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 3,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ]
+  },
+  "Coordenação-Geral de Audiovisual": {
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo C",
+        "concluidos": 2,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 7,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 6,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo C",
+        "concluidos": 7,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo D",
+        "concluidos": 7,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 0,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo D",
+        "concluidos": 3,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ],
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 6,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 3,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo C",
+        "concluidos": 6,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ]
+  },
+  "Coordenação-Geral de Conteúdo": {
+    "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS": [
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo A",
+        "concluidos": 2,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo B",
+        "concluidos": 6,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo C",
+        "concluidos": 1,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo D",
+        "concluidos": 2,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      },
+      {
+        "nome": "TRANSFERÊNCIAS VOLUNTÁRIAS/             EMENDAS - Processo E",
+        "concluidos": 0,
+        "etapas": [
+          "1. Recebimento e Distribuição da Proposta",
+          "2. Análise Inicial da Proposta",
+          "3. Resposta e Análise das Diligências",
+          "4. Aprovação da Proposta e Solicitação de Empenho",
+          "5. Avaliação e Aprovação do Plano de Trabalho",
+          "6. Celebração do Termo de Fomento ou Convênio",
+          "7. Pagamento da Parceria"
+        ]
+      }
+    ],
+    "DIÁRIAS E PASSAGENS": [
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo A",
+        "concluidos": 5,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo B",
+        "concluidos": 2,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      },
+      {
+        "nome": "DIÁRIAS E PASSAGENS - Processo C",
+        "concluidos": 4,
+        "etapas": [
+          "1- Solicitação de autorização de viagem",
+          "2- Instrução processual",
+          "3- Cotação de passagens",
+          "4- Procedimentos SCDP",
+          "5- Emissão de passagens aéreas",
+          "6-  Pagamento de diárias",
+          "7- Prestação de Contas"
+        ]
+      }
+    ],
+    "PLANEJAMENTO ORÇAMENTÁRIO": [
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo A",
+        "concluidos": 1,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo B",
+        "concluidos": 2,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      },
+      {
+        "nome": "PLANEJAMENTO ORÇAMENTÁRIO - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Identificar de projetos e atividades para execução \n",
+          "2- Priorizar de projetos e atividades",
+          "3- Monitorar a execução dos projetos e atividades "
+        ]
+      }
+    ],
+    "ATENDIMENTOS A DEMANDAS EXTERNAS ": [
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo A",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo B",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo C",
+        "concluidos": 0,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo D",
+        "concluidos": 3,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      },
+      {
+        "nome": "ATENDIMENTOS A DEMANDAS EXTERNAS  - Processo E",
+        "concluidos": 4,
+        "etapas": [
+          "1- Registro da demanda no SEI ou outra forma de acompanhamento e análise da solicitação",
+          "2. Encaminhamento da demanda para manifestação das unidades envolvidas.",
+          "3- Consolidação das informações coletadas.",
+          "4- Elaboração de resposta final"
+        ]
+      }
+    ],
+    "TED": [
+      {
+        "nome": "TED - Processo A",
+        "concluidos": 1,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo B",
+        "concluidos": 4,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      },
+      {
+        "nome": "TED - Processo C",
+        "concluidos": 4,
+        "etapas": [
+          "1- Manifestação de interesse ",
+          "2 - Abertura e cadastramento do Programa no TransfereGov. ",
+          "3 - Cadastramento do Plano de Ação ",
+          "4 - Realização de fluxo interno (MinC) via SEI - formulário do TED",
+          "5 - Análise do Plano de Trabalho e demais documentos enviados pela descentralizada",
+          "6 - Assinatura do TED ",
+          "7 - Descentralização orçamentária e financeira"
+        ]
+      }
+    ]
+  }
+};
+    const objetivosEntregas = {
+  "6. Preservar e difundir memórias e patrimônios culturais brasileiros": [
+    "Novo PAC",
+    "Programa Conviver",
+    "Fomento e sustentabilidade/ Participação Social- 9º Fórum Nacional de Museus",
+    "Modernização de Museus IBRAM- entrega de 10 obras",
+    "Preservação do ambiente digital da FBN (datacenter)"
+  ],
+  "9. Fortalecer as redes produtivas e criativas da cultura e das artes, potencializar a geração de trabalho, emprego e renda, ampliando a participação da cultura no PIB e no desenvolvimento nacional​": [
+    "Brasil das Artes - Política Nacional das Artes",
+    "Funarte 50 anos - programas federais de fomento para a Política Nacional das Artes",
+    "Chamadas Públicas BRDE/FSA",
+    "Linhas de Crédito FSA",
+    "Territórios Criativos",
+    "Pauta legislativa de Economia criativa"
+  ],
+  "2. Reconhecer, valorizar e promover a diversidade das expressões culturais e artísticas dos diferentes territórios brasileiros": [
+    "Democracia: Memória, Cultura e Salvaguarda (ações de fomento à cultura negra)",
+    "Programa cultural de salvaguarda das comunidades quilombolas",
+    "PNCV- Cultura Viva do tamanho do Brasil",
+    "Política Nacional das Culturas Tradicionais e Populares ",
+    "Ampliação dos programas especiais da Rouanet"
+  ],
+  "15. Fortalecer a capacidade institucional e de gestão do Ministério da Cultura e das entidades vinculadas.​ ": [
+    "Cessão “Casa de Afonso Arinos” -expo acervo do AMLB e atividades do PPGMA",
+    "Edifício anexo \" Centro Rui Barbosa de Preservação\"",
+    "Inauguração do novo Prédio Anexo"
+  ],
+  "3. Ampliar a infraestrutura cultural (equipamentos, espaços e serviços) nos territórios.​": [
+    "Novo PAC (CEUs da Cultura e retomada)",
+    "MovCEUS",
+    "PNLD/ Mais Bibliotecas / SNBP "
+  ],
+  "12. Criar marcos e instrumentos legais para institucionalizar políticas culturais": [
+    "Remuneração no IA e no Streaming",
+    "Marco Legal de Conhecimentos Tradicionais, Expressões Culturais Trad. e Culturas Populares",
+    "Regulamentação do VOD "
+  ],
+  "4. Ampliar o exercício dos direitos culturais e democratizar o acesso da fruição da ação cultural.​": [
+    "Projeto Territórios de Arte e Cultura nas Escolas em Tempo Integral"
+  ],
+  "10. Promover a apropriação social das tecnologias e ambiente digitais para impulsionar a cultura digital e suas possibilidades de expressão, produção, difusão e fruição": [
+    "Tela Brasil"
+  ],
+  "1. Consolidar o Sistema Nacional de Cultura, com a ativação da presença das políticas culturais nos municípios e estados.​": [
+    "Formação, Articulação Federativa e Comunicação nos territórios (PNCC)",
+    "Pactuação Federativa - SNC"
+  ]
+};
+    let chart;
+    const servidoresPorUnidade = {
+  "Corregedoria": 7,
+  "Ouvidoria": 7,
+  "Assessoria de Participação Social e Diversidade": 2,
+  "Coordenação-Geral 1/GM": 2,
+  "Coordenação-Geral 2/GM": 4,
+  "Coordenação-Geral 3 /GM": 3,
+  "Coordenação-Geral 4/GM": 4,
+  "Coordenação-Geral 5/GM": 4,
+  "Coordenação-Geral de Audiovisual": 6,
+  "Coordenação-Geral de Conteúdo": 5
+};
+
+    const unidadeSelect = document.getElementById('unidade-select');
+    const tipoSelect = document.getElementById('tipo-processo-select');
+    const processoSelect = document.getElementById('processo-individual-select');
+    const objetivoSelect = document.getElementById('objetivo-select');
+    const entregaSelect = document.getElementById('entrega-select');
+    const ctx = document.getElementById('graficoProcesso').getContext('2d');
+    const tempoRestante = document.getElementById('tempo-restante');
+    const etapasLista = document.getElementById('etapas-lista');
+    const resumoUnidade = document.getElementById('resumo-unidade');
+
+    function atualizarUnidades() {
+      unidadeSelect.innerHTML = '';
+      Object.keys(estrutura).forEach(unidade => {
+        const opt = document.createElement('option');
+        opt.value = unidade;
+        opt.textContent = unidade;
+        unidadeSelect.appendChild(opt);
+      });
+      atualizarTipos();
+    }
+
+    function atualizarTipos() {
+      const unidade = unidadeSelect.value;
+      const tipos = Object.keys(estrutura[unidade] || {});
+      tipoSelect.innerHTML = '';
+      tipos.forEach(tipo => {
+        const opt = document.createElement('option');
+        opt.value = tipo;
+        opt.textContent = tipo;
+        tipoSelect.appendChild(opt);
+      });
+      atualizarProcessos();
+    }
+
+    function atualizarProcessos() {
+      const unidade = unidadeSelect.value;
+      const tipo = tipoSelect.value;
+      const processos = estrutura[unidade]?.[tipo] || [];
+      processoSelect.innerHTML = '';
+      processos.forEach((proc, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = proc.nome;
+        processoSelect.appendChild(opt);
+      });
+      desenharGrafico();
+      atualizarResumo();
+    }
+
+    function atualizarResumo() {
+      const unidade = unidadeSelect.value;
+      const tipos = Object.keys(estrutura[unidade] || {});
+      let totalProcessos = 0;
+      tipos.forEach(tipo => totalProcessos += estrutura[unidade][tipo].length);
+      resumoUnidade.textContent = `${unidade} possui ${servidoresPorUnidade[unidade]} servidores, ${tipos.length} tipos de processos e ${totalProcessos} processos individuais em andamento.`;
+    }
+
+    function desenharGrafico() {
+      const unidade = unidadeSelect.value;
+      const tipo = tipoSelect.value;
+      const idx = processoSelect.value;
+      const processo = estrutura[unidade][tipo][idx];
+      const concluido = processo.concluidos;
+      const total = processo.etapas.length;
+      const restante = total - concluido;
+      const percent = ((concluido / total) * 100).toFixed(1);
+      if (chart) chart.destroy();
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Execução'],
+          datasets: [
+            { label: 'Concluído', data: [concluido], backgroundColor: '#00D000' },
+            { label: 'Pendente', data: [restante], backgroundColor: '#FF0000' }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: {
+            title: { display: true, text: `${processo.nome} - Execução: ${percent}%` },
+            legend: { position: 'bottom' },
+            datalabels: {
+              anchor: 'center', align: 'center', color: '#fff',
+              font: { weight: 'bold' },
+              formatter: (value, ctx) => `${ctx.chart.data.datasets[ctx.datasetIndex].label}: ${value}`
+            }
+          },
+          scales: {
+            x: { stacked: true, max: total },
+            y: { stacked: true }
+          },
+          animation: { duration: 1000, easing: 'easeOutQuart' }
+        },
+        plugins: [ChartDataLabels]
+      });
+      tempoRestante.textContent = `Tempo médio restante: ${restante * 5} dias | Tempo decorrido: ${concluido * 5} dias`;
+      etapasLista.innerHTML = processo.etapas.map((etapa, i) => `<li style="color:${i < concluido ? '#00D000' : '#FF0000'}">${etapa}</li>`).join('');
+    }
+
+    function atualizarObjetivos() {
+      objetivoSelect.innerHTML = '';
+      Object.keys(objetivosEntregas).forEach(obj => {
+        const opt = document.createElement('option');
+        opt.value = obj;
+        opt.textContent = obj;
+        objetivoSelect.appendChild(opt);
+      });
+      atualizarEntregas();
+    }
+
+    function atualizarEntregas() {
+      const objetivo = objetivoSelect.value;
+      const entregas = objetivosEntregas[objetivo] || [];
+      entregaSelect.innerHTML = '';
+      entregas.forEach(ent => {
+        const opt = document.createElement('option');
+        opt.value = ent;
+        opt.textContent = ent;
+        entregaSelect.appendChild(opt);
+      });
+    }
+
+    unidadeSelect.addEventListener('change', atualizarTipos);
+    tipoSelect.addEventListener('change', atualizarProcessos);
+    processoSelect.addEventListener('change', desenharGrafico);
+    objetivoSelect.addEventListener('change', atualizarEntregas);
+    atualizarUnidades();
+    atualizarObjetivos();
+  </script>
 </body>
 </html>
