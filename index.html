@@ -7,53 +7,50 @@
   <style>
     body {
       font-family: Verdana, sans-serif;
-      background-color: #FFFFFF; /* Branco-Paz */
-      color: #3C3C3C; /* Cinza-Hárpia */
+      background-color: #FFFFFF;
+      color: #3C3C3C;
       margin: 0;
       padding: 0;
     }
-
     header {
-      background-color: #183EFF; /* Azul-Atlântico */
+      background-color: #183EFF;
       color: white;
       padding: 20px;
       text-align: center;
     }
-
     .painel {
       padding: 20px;
     }
-
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 30px;
     }
-
     th, td {
       border: 1px solid #ccc;
       padding: 10px;
       text-align: left;
     }
-
     th {
-      background-color: #FFD000; /* Amarelo-Sol */
+      background-color: #FFD000;
     }
-
     .indicadores {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
-
     .indicador {
-      border: 2px solid #00D000; /* Verde-Amazônia */
+      border: 2px solid #00D000;
       padding: 15px;
       background-color: #F8F8F8;
     }
-
     .link-manual {
-      background-color: #FF0000; /* Vermelho-Urucum */
+      background-color: #FF0000;
       color: white;
       padding: 10px;
       display: inline-block;
@@ -67,44 +64,21 @@
     <h1>Gestão de Processos - Ministério da Cultura</h1>
     <p>Visualização de dados estratégicos e operacionais</p>
   </header>
-
   <div class="painel">
-    <h2>Resumo por Unidade</h2>
+    <label for="unidade-select"><strong>Selecione a Unidade:</strong></label>
+    <select id="unidade-select" onchange="atualizarTabela()">
+    </select>
+
+    <h2>Resumo da Unidade</h2>
     <table>
       <thead>
         <tr>
           <th>Unidade</th>
           <th>Nº de Servidores</th>
-          <th>Nº de Processos</th>
+          <th>Processos Relacionados</th>
         </tr>
       </thead>
       <tbody id="tabela-unidades">
-        <tr><td>Assessoria de Participação Social e Diversidade</td><td>--</td><td>--</td></tr>
-        <tr><td>Consultoria Jurídica</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral 1/CONJUR</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral 1/DPDC</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral 1/GM</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral 2/GM</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral 3 /GM</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral 4/GM</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral 5/GM</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral Monitoramento e Execução</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Análise de Prestação de Contas</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Apoio Jurídico para Políticas Culturais</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Articulação da Cultura Viva</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Articulação de Políticas de Cultura e Educação</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Articulação e Parcerias</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Assuntos Internacionais</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Assuntos Parlamentares e Federativos</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Audiovisual</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Celebração</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Comunicação e Cultura</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Conciliação Administrativa</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Conteúdo</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Desburocratização</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Desenvolvimento Econômico da Cultura</td><td>--</td><td>--</td></tr>
-        <tr><td>Coordenação-Geral de Desenvolvimento de Projetos</td><td>--</td><td>--</td></tr>
-        <!-- Lista continua conforme necessário -->
       </tbody>
     </table>
 
@@ -127,8 +101,45 @@
         <p id="macroprocessos">--</p>
       </div>
     </div>
-
     <a class="link-manual" href="#">Acessar Manuais e Legislação</a>
   </div>
+  <script>
+    const dados = [
+      { unidade: "Assessoria de Participação Social e Diversidade", servidores: 3 },
+      { unidade: "Consultoria Jurídica", servidores: 3 },
+      { unidade: "Coordenação-Geral 1/CONJUR", servidores: 6 },
+      { unidade: "Coordenação-Geral 1/DPDC", servidores: 4 },
+      { unidade: "Coordenação-Geral 1/GM", servidores: 2 },
+      { unidade: "Coordenação-Geral 2/GM", servidores: 4 }
+    ];
+
+    const processos = [
+      "Unnamed: 0", "Unnamed: 1", "Unnamed: 2", "Unnamed: 3", "Unnamed: 4",
+      "Unnamed: 5", "Unnamed: 6", "Unnamed: 7", "Unnamed: 8", "Unnamed: 9",
+      "Unnamed: 10", "Unnamed: 11", "Unnamed: 12"
+    ];
+
+    const select = document.getElementById("unidade-select");
+    const tabela = document.getElementById("tabela-unidades");
+
+    dados.forEach((item, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent = item.unidade;
+      select.appendChild(option);
+    });
+
+    function atualizarTabela() {
+      const idx = select.value;
+      const item = dados[idx];
+      tabela.innerHTML = `<tr>
+        <td>${item.unidade}</td>
+        <td>${item.servidores}</td>
+        <td>${processos.join(", ")}</td>
+      </tr>`;
+    }
+
+    atualizarTabela();
+  </script>
 </body>
 </html>
