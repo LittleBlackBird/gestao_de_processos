@@ -10,59 +10,75 @@
 </head>
 <body>
   <div class="painel">
-  <h1>Painel de Gestão de Processos</h1>
+    <h1>Painel de Gestão de Processos</h1>
 
-  <div class="filtros">
-    <div>
-      <label for="unidade-select"><strong>Unidade:</strong></label>
-      <select id="unidade-select">
-        <option>Coordenação-Geral 1/GM</option>
-        <option>Coordenação-Geral 2/GM</option>
-        <option>Consultoria Jurídica</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
-      <select id="tipo-processo-select"></select>
-    </div>
-
-    <div>
-      <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
-      <select id="processo-individual-select"></select>
-    </div>
-  </div>
-
-  <div class="grafico-container">
-    <canvas id="graficoProcesso"></canvas>
-  </div>
-
-  <div class="indicador">
-    <strong>Relação com Estratégia:</strong>
-    <div class="estrategia">
+    <div class="filtros">
       <div>
-        <label>Objetivo Estratégico:</label>
-        <select>
-          <option>1. Consolidar o Sistema Nacional de Cultura...</option>
-          <option>10. Promover a apropriação social das tecnologias...</option>
-          <option>12. Criar marcos e instrumentos legais...</option>
+        <label for="unidade-select"><strong>Unidade:</strong></label>
+        <select id="unidade-select">
+          <option>Coordenação-Geral 1/GM</option>
+          <option>Coordenação-Geral 2/GM</option>
+          <option>Consultoria Jurídica</option>
         </select>
       </div>
 
       <div>
-        <label>Entrega Prioritária:</label>
-        <select>
-          <option>Ampliação dos programas especiais da Rouanet</option>
-          <option>Brasil das Artes - Política Nacional das Artes</option>
-          <option>Cessão “Casa de Afonso Arinos”...</option>
-        </select>
+        <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
+        <select id="tipo-processo-select"></select>
+      </div>
+
+      <div>
+        <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
+        <select id="processo-individual-select"></select>
       </div>
     </div>
-  </div>
+
+    <div class="grafico-indicadores" style="display: flex; gap: 20px; align-items: flex-start;">
+      <div class="indicador" style="flex: 1;">
+        <strong>Indicadores do Processo:</strong>
+        <p id="tempo-restante">Tempo médio restante: -- dias</p>
+        <ul id="etapas-lista">Etapas:</ul>
+      </div>
+
+      <div class="grafico-container" style="flex: 1;">
+        <canvas id="graficoProcesso"></canvas>
+      </div>
+    </div>
 
     <div class="indicador">
-      <strong>Resumo da Unidade:</strong>
-      <p id="resumo-unidade">Esta unidade possui 5 servidores e está vinculada a 2 tipos de processos.</p>
+      <strong>Relação com Estratégia:</strong>
+      <div class="estrategia">
+        <div>
+          <label>Objetivo Estratégico:</label>
+          <select>
+            <option>1. Consolidar o Sistema Nacional de Cultura...</option>
+            <option>10. Promover a apropriação social das tecnologias...</option>
+            <option>12. Criar marcos e instrumentos legais...</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Entrega Prioritária:</label>
+          <select>
+            <option>Ampliação dos programas especiais da Rouanet</option>
+            <option>Brasil das Artes - Política Nacional das Artes</option>
+            <option>Cessão “Casa de Afonso Arinos”...</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+      <div class="indicador" style="flex: 1;">
+        <strong>Resumo da Unidade:</strong>
+        <p id="resumo-unidade"></p>
+      </div>
+
+      <div class="indicador" style="flex: 1;">
+        <strong>Relação com Macroprocessos:</strong>
+        <p>--</p>
+        <a href="#" class="link-manual">Acessar Manuais e Legislação</a>
+      </div>
     </div>
   </div>
 
@@ -97,6 +113,10 @@
     const tipoSelect = document.getElementById('tipo-processo-select');
     const processoSelect = document.getElementById('processo-individual-select');
     const ctx = document.getElementById('graficoProcesso').getContext('2d');
+    const tempoRestante = document.getElementById('tempo-restante');
+    const etapasLista = document.getElementById('etapas-lista');
+    const resumoUnidade = document.getElementById('resumo-unidade');
+
     let chart;
 
     function atualizarTipos() {
@@ -121,6 +141,17 @@
         processoSelect.appendChild(option);
       });
       desenharGrafico();
+      atualizarResumo();
+    }
+
+    function atualizarResumo() {
+      const unidade = document.getElementById('unidade-select').value;
+      const tipo = tipoSelect.value;
+      const totalTipos = Object.keys(estrutura).length;
+      let totalProcessos = 0;
+      Object.values(estrutura).forEach(arr => totalProcessos += arr.length);
+
+      resumoUnidade.textContent = `${unidade} possui 5 servidores, ${totalTipos} tipos de processos e ${totalProcessos} processos individuais.`;
     }
 
     function desenharGrafico() {
@@ -139,59 +170,33 @@
         data: {
           labels: ['Execução'],
           datasets: [
-            {
-              label: 'Concluído',
-              data: [concluido],
-              backgroundColor: '#00D000'
-            },
-            {
-              label: 'Pendente',
-              data: [restante],
-              backgroundColor: '#FF0000'
-            }
+            { label: 'Concluído', data: [concluido], backgroundColor: '#00D000' },
+            { label: 'Pendente', data: [restante], backgroundColor: '#FF0000' }
           ]
         },
         options: {
           indexAxis: 'y',
           responsive: true,
           plugins: {
-            title: {
-              display: true,
-              text: `${processo.nome} - Execução: ${percent}%`
-            },
-            legend: {
-              position: 'bottom'
-            },
+            title: { display: true, text: `${processo.nome} - Execução: ${percent}%` },
+            legend: { position: 'bottom' },
             datalabels: {
-              anchor: 'center',
-              align: 'center',
-              color: '#fff',
-              font: {
-                weight: 'bold'
-              },
-              formatter: (value, ctx) => {
-                const datasetIndex = ctx.datasetIndex;
-                const label = ctx.chart.data.datasets[datasetIndex].label;
-                return `${label}: ${value}`;
-              }
+              anchor: 'center', align: 'center', color: '#fff',
+              font: { weight: 'bold' },
+              formatter: (value, ctx) => `${ctx.chart.data.datasets[ctx.datasetIndex].label}: ${value}`
             }
           },
           scales: {
-            x: {
-              stacked: true,
-              max: total
-            },
-            y: {
-              stacked: true
-            }
+            x: { stacked: true, max: total },
+            y: { stacked: true }
           },
-          animation: {
-            duration: 1000,
-            easing: 'easeOutQuart'
-          }
+          animation: { duration: 1000, easing: 'easeOutQuart' }
         },
         plugins: [ChartDataLabels]
       });
+
+      tempoRestante.textContent = `Tempo médio restante: ${restante * 5} dias`;
+      etapasLista.innerHTML = processo.etapas.map((etapa, i) => `<li style="color:${i < concluido ? '#00D000' : '#FF0000'}">${etapa}</li>`).join('');
     }
 
     tipoSelect.addEventListener('change', atualizarProcessos);
