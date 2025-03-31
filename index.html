@@ -10,27 +10,36 @@
 </head>
 <body>
   <div class="painel">
-    <h1>Painel de Gestão de Processos</h1>
+  <h1>Painel de Gestão de Processos</h1>
 
-    <label for="unidade-select"><strong>Unidade:</strong></label>
-    <select id="unidade-select">
-      <option>Coordenação-Geral 1/GM</option>
-      <option>Coordenação-Geral 2/GM</option>
-      <option>Consultoria Jurídica</option>
-    </select>
-
-    <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
-    <select id="tipo-processo-select"></select>
-
-    <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
-    <select id="processo-individual-select"></select>
-
-    <div class="grafico-container">
-      <canvas id="graficoProcesso"></canvas>
+  <div class="filtros">
+    <div>
+      <label for="unidade-select"><strong>Unidade:</strong></label>
+      <select id="unidade-select">
+        <option>Coordenação-Geral 1/GM</option>
+        <option>Coordenação-Geral 2/GM</option>
+        <option>Consultoria Jurídica</option>
+      </select>
     </div>
 
-    <div class="indicador">
-      <strong>Relação com Estratégia:</strong>
+    <div>
+      <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
+      <select id="tipo-processo-select"></select>
+    </div>
+
+    <div>
+      <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
+      <select id="processo-individual-select"></select>
+    </div>
+  </div>
+
+  <div class="grafico-container">
+    <canvas id="graficoProcesso"></canvas>
+  </div>
+
+  <div class="indicador">
+    <strong>Relação com Estratégia:</strong>
+    <div class="estrategia">
       <div>
         <label>Objetivo Estratégico:</label>
         <select>
@@ -39,6 +48,7 @@
           <option>12. Criar marcos e instrumentos legais...</option>
         </select>
       </div>
+
       <div>
         <label>Entrega Prioritária:</label>
         <select>
@@ -48,6 +58,7 @@
         </select>
       </div>
     </div>
+  </div>
 
     <div class="indicador">
       <strong>Resumo da Unidade:</strong>
