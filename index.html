@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,59 +12,7 @@
 <body>
   <div class="painel">
     <h1>Painel de Gestão de Processos</h1>
-    <div class="filtros">
-      <div>
-        <label for="unidade-select"><strong>Unidade:</strong></label>
-        <select id="unidade-select"></select>
-      </div>
-      <div>
-        <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
-        <select id="tipo-processo-select"></select>
-      </div>
-      <div>
-        <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
-        <select id="processo-individual-select"></select>
-      </div>
-    </div>
-    <div class="grafico-indicadores" style="display: flex; gap: 20px; align-items: flex-start;">
-      <div class="indicador" style="flex: 1;">
-        <strong>Indicadores do Processo:</strong>
-        <p id="tempo-restante">Tempo médio restante: -- dias</p>
-        <ul id="etapas-lista">Etapas:</ul>
-      </div>
-      <div class="grafico-container" style="flex: 1;">
-        <canvas id="graficoProcesso"></canvas>
-      </div>
-    </div>
-    <div class="indicador">
-      <strong>Relação com Estratégia:</strong>
-      <div class="estrategia">
-        <div>
-          <label>Objetivo Estratégico:</label>
-          <select id="objetivo-select"></select>
-        </div>
-        <div>
-          <label>Entrega Prioritária:</label>
-          <select id="entrega-select"></select>
-        </div>
-      </div>
-    </div>
-    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-      <div class="indicador" style="flex: 1;">
-        <strong>Resumo da Unidade:</strong>
-        <p id="resumo-unidade"></p>
-      </div>
-      <div class="indicador" style="flex: 1;">
-        <strong>Relação com Macroprocessos:</strong>
-        <p>--</p>
-        <button class="link-manual">Acessar Manuais e Legislação</button>
-      </div>
-    </div>
+    <!-- Conteúdo do painel aqui -->
   </div>
-  <script>
-    const estrutura = {
-      // As primeiras 7 unidades foram removidas. Novas unidades devem ser inseridas aqui.
-    };
-  </script>
 </body>
 </html>
