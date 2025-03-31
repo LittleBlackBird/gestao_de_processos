@@ -1,194 +1,236 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Painel de Gestão de Processos</title>
-  <link rel="stylesheet" href="estilo_painel_processos.css">
+  <link rel="stylesheet" href="estilo_painel_processos.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
   <div class="painel">
     <h1>Painel de Gestão de Processos</h1>
-    <!-- conteúdo visual igual ao anterior -->
+    <div class="filtros">
+      <div>
+        <label for="unidade-select"><strong>Unidade:</strong></label>
+        <select id="unidade-select"></select>
+      </div>
+      <div>
+        <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
+        <select id="tipo-processo-select"></select>
+      </div>
+      <div>
+        <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
+        <select id="processo-individual-select"></select>
+      </div>
+    </div>
+    <div class="grafico-indicadores" style="display: flex; gap: 20px; align-items: flex-start;">
+      <div class="indicador" style="flex: 1;">
+        <strong>Indicadores do Processo:</strong>
+        <p id="tempo-restante">Tempo médio restante: -- dias</p>
+        <ul id="etapas-lista">Etapas:</ul>
+      </div>
+      <div class="grafico-container" style="flex: 1;">
+        <canvas id="graficoProcesso"></canvas>
+      </div>
+    </div>
+    <div class="indicador">
+      <strong>Relação com Estratégia:</strong>
+      <div class="estrategia">
+        <div>
+          <label>Objetivo Estratégico:</label>
+          <select id="objetivo-select"></select>
+        </div>
+        <div>
+          <label>Entrega Prioritária:</label>
+          <select id="entrega-select"></select>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+      <div class="indicador" style="flex: 1;">
+        <strong>Resumo da Unidade:</strong>
+        <p id="resumo-unidade"></p>
+      </div>
+      <div class="indicador" style="flex: 1;">
+        <strong>Relação com Macroprocessos:</strong>
+        <p>--</p>
+        <button class="link-manual">Acessar Manuais e Legislação</button>
+      </div>
+    </div>
   </div>
-
   <script>
     const estrutura = {
-  "Corregedoria": {
-    "PROJETOS": [
-      {
-        "nome": "PROJETOS - Processo A",
-        "concluidos": 3,
-        "etapas": [
-          "1- Iniciação (objetivos, metas, partes interessadas etc)",
-          "2. Inicio da Execução",
-          "3. 30% Concluído",
-          "4. 60% Concluído",
-          "5. 80% concluído",
-          "6- Encerramento (entrega final)"
+      "Corregedoria": {
+        "PROJETOS": [
+          {
+            "nome": "PROJETOS - Processo A",
+            "concluidos": 3,
+            "etapas": [
+              "1- Iniciação (objetivos, metas, partes interessadas etc)",
+              "2. Inicio da Execução",
+              "3. 30% Concluído",
+              "4. 60% Concluído",
+              "5. 80% concluído",
+              "6- Encerramento (entrega final)"
+            ]
+          },
+          {
+            "nome": "PROJETOS - Processo B",
+            "concluidos": 5,
+            "etapas": [
+              "1- Iniciação (objetivos, metas, partes interessadas etc)",
+              "2. Inicio da Execução",
+              "3. 30% Concluído",
+              "4. 60% Concluído",
+              "5. 80% concluído",
+              "6- Encerramento (entrega final)"
+            ]
+          }
         ]
-      },
-      {
-        "nome": "PROJETOS - Processo B",
-        "concluidos": 5,
-        "etapas": [
-          "1- Iniciação (objetivos, metas, partes interessadas etc)",
-          "2. Inicio da Execução",
-          "3. 30% Concluído",
-          "4. 60% Concluído",
-          "5. 80% concluído",
-          "6- Encerramento (entrega final)"
-        ]
-      }]} // abreviado por espaço
-};
+      }
+    };
     const objetivosEntregas = {
-  "6. Preservar e difundir memórias e patrimônios culturais brasileiros": [
-    "Novo PAC",
-    "Programa Conviver",
-    "Fomento e sustentabilidade/ Participação Social- 9º Fórum Nacional de Museus",
-    "Modernização de Museus IBRAM- entrega de 10 obras",
-    "Preservação do ambiente digital da FBN (datacenter)"
-  ]
-  // conteúdo abreviado
-};
-
-    // lógica atualizada para lidar com estrutura por unidade
-
-const unidadeSelect = document.getElementById('unidade-select');
-const tipoSelect = document.getElementById('tipo-processo-select');
-const processoSelect = document.getElementById('processo-individual-select');
-const objetivoSelect = document.querySelector('select:nth-of-type(4)');
-const entregaSelect = document.querySelector('select:nth-of-type(5)');
-const ctx = document.getElementById('graficoProcesso').getContext('2d');
-const tempoRestante = document.getElementById('tempo-restante');
-const etapasLista = document.getElementById('etapas-lista');
-const resumoUnidade = document.getElementById('resumo-unidade');
-let chart;
-
-function atualizarUnidades() {
-  unidadeSelect.innerHTML = '';
-  Object.keys(estrutura).forEach(unidade => {
-    const opt = document.createElement('option');
-    opt.value = unidade;
-    opt.textContent = unidade;
-    unidadeSelect.appendChild(opt);
-  });
-  atualizarTipos();
-}
-
-function atualizarTipos() {
-  const unidade = unidadeSelect.value;
-  const tipos = Object.keys(estrutura[unidade] || {});
-  tipoSelect.innerHTML = '';
-  tipos.forEach(tipo => {
-    const opt = document.createElement('option');
-    opt.value = tipo;
-    opt.textContent = tipo;
-    tipoSelect.appendChild(opt);
-  });
-  atualizarProcessos();
-}
-
-function atualizarProcessos() {
-  const unidade = unidadeSelect.value;
-  const tipo = tipoSelect.value;
-  const processos = estrutura[unidade]?.[tipo] || [];
-  processoSelect.innerHTML = '';
-  processos.forEach((proc, i) => {
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = proc.nome;
-    processoSelect.appendChild(opt);
-  });
-  desenharGrafico();
-  atualizarResumo();
-}
-
-function atualizarResumo() {
-  const unidade = unidadeSelect.value;
-  const tipos = Object.keys(estrutura[unidade] || {});
-  let totalProcessos = 0;
-  tipos.forEach(tipo => totalProcessos += estrutura[unidade][tipo].length);
-  resumoUnidade.textContent = `${unidade} possui 5 servidores, ${tipos.length} tipos de processos e ${totalProcessos} processos individuais em andamento.`;
-}
-
-function desenharGrafico() {
-  const unidade = unidadeSelect.value;
-  const tipo = tipoSelect.value;
-  const idx = processoSelect.value;
-  const processo = estrutura[unidade][tipo][idx];
-  const concluido = processo.concluidos;
-  const total = processo.etapas.length;
-  const restante = total - concluido;
-  const percent = ((concluido / total) * 100).toFixed(1);
-  if (chart) chart.destroy();
-  chart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Execução'],
-      datasets: [
-        { label: 'Concluído', data: [concluido], backgroundColor: '#00D000' },
-        { label: 'Pendente', data: [restante], backgroundColor: '#FF0000' }
+      "6. Preservar e difundir memórias e patrimônios culturais brasileiros": [
+        "Novo PAC",
+        "Programa Conviver",
+        "Fomento e sustentabilidade/ Participação Social- 9º Fórum Nacional de Museus",
+        "Modernização de Museus IBRAM- entrega de 10 obras",
+        "Preservação do ambiente digital da FBN (datacenter)"
       ]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      plugins: {
-        title: { display: true, text: `${processo.nome} - Execução: ${percent}%` },
-        legend: { position: 'bottom' },
-        datalabels: {
-          anchor: 'center', align: 'center', color: '#fff',
-          font: { weight: 'bold' },
-          formatter: (value, ctx) => `${ctx.chart.data.datasets[ctx.datasetIndex].label}: ${value}`
-        }
-      },
-      scales: {
-        x: { stacked: true, max: total },
-        y: { stacked: true }
-      },
-      animation: { duration: 1000, easing: 'easeOutQuart' }
-    },
-    plugins: [ChartDataLabels]
-  });
-  tempoRestante.textContent = `Tempo médio restante: ${restante * 5} dias | Tempo decorrido: ${concluido * 5} dias`;
-  etapasLista.innerHTML = processo.etapas.map((etapa, i) => `<li style="color:${i < concluido ? '#00D000' : '#FF0000'}">${etapa}</li>`).join('');
-}
+    };
 
-function atualizarObjetivos() {
-  objetivoSelect.innerHTML = '';
-  Object.keys(objetivosEntregas).forEach(obj => {
-    const opt = document.createElement('option');
-    opt.value = obj;
-    opt.textContent = obj;
-    objetivoSelect.appendChild(opt);
-  });
-  atualizarEntregas();
-}
+    const unidadeSelect = document.getElementById('unidade-select');
+    const tipoSelect = document.getElementById('tipo-processo-select');
+    const processoSelect = document.getElementById('processo-individual-select');
+    const objetivoSelect = document.getElementById('objetivo-select');
+    const entregaSelect = document.getElementById('entrega-select');
+    const ctx = document.getElementById('graficoProcesso').getContext('2d');
+    const tempoRestante = document.getElementById('tempo-restante');
+    const etapasLista = document.getElementById('etapas-lista');
+    const resumoUnidade = document.getElementById('resumo-unidade');
+    let chart;
 
-function atualizarEntregas() {
-  const objetivo = objetivoSelect.value;
-  const entregas = objetivosEntregas[objetivo] || [];
-  entregaSelect.innerHTML = '';
-  entregas.forEach(ent => {
-    const opt = document.createElement('option');
-    opt.value = ent;
-    opt.textContent = ent;
-    entregaSelect.appendChild(opt);
-  });
-}
+    function atualizarUnidades() {
+      unidadeSelect.innerHTML = '';
+      Object.keys(estrutura).forEach(unidade => {
+        const opt = document.createElement('option');
+        opt.value = unidade;
+        opt.textContent = unidade;
+        unidadeSelect.appendChild(opt);
+      });
+      atualizarTipos();
+    }
 
-unidadeSelect.addEventListener('change', atualizarTipos);
-tipoSelect.addEventListener('change', atualizarProcessos);
-processoSelect.addEventListener('change', desenharGrafico);
-objetivoSelect.addEventListener('change', atualizarEntregas);
+    function atualizarTipos() {
+      const unidade = unidadeSelect.value;
+      const tipos = Object.keys(estrutura[unidade] || {});
+      tipoSelect.innerHTML = '';
+      tipos.forEach(tipo => {
+        const opt = document.createElement('option');
+        opt.value = tipo;
+        opt.textContent = tipo;
+        tipoSelect.appendChild(opt);
+      });
+      atualizarProcessos();
+    }
 
-atualizarUnidades();
-atualizarObjetivos();
-    // exibir unidades, tipos de processo por unidade, processos individuais etc.
+    function atualizarProcessos() {
+      const unidade = unidadeSelect.value;
+      const tipo = tipoSelect.value;
+      const processos = estrutura[unidade]?.[tipo] || [];
+      processoSelect.innerHTML = '';
+      processos.forEach((proc, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = proc.nome;
+        processoSelect.appendChild(opt);
+      });
+      desenharGrafico();
+      atualizarResumo();
+    }
+
+    function atualizarResumo() {
+      const unidade = unidadeSelect.value;
+      const tipos = Object.keys(estrutura[unidade] || {});
+      let totalProcessos = 0;
+      tipos.forEach(tipo => totalProcessos += estrutura[unidade][tipo].length);
+      resumoUnidade.textContent = `${unidade} possui 5 servidores, ${tipos.length} tipos de processos e ${totalProcessos} processos individuais em andamento.`;
+    }
+
+    function desenharGrafico() {
+      const unidade = unidadeSelect.value;
+      const tipo = tipoSelect.value;
+      const idx = processoSelect.value;
+      const processo = estrutura[unidade][tipo][idx];
+      const concluido = processo.concluidos;
+      const total = processo.etapas.length;
+      const restante = total - concluido;
+      const percent = ((concluido / total) * 100).toFixed(1);
+      if (chart) chart.destroy();
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Execução'],
+          datasets: [
+            { label: 'Concluído', data: [concluido], backgroundColor: '#00D000' },
+            { label: 'Pendente', data: [restante], backgroundColor: '#FF0000' }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: {
+            title: { display: true, text: `${processo.nome} - Execução: ${percent}%` },
+            legend: { position: 'bottom' },
+            datalabels: {
+              anchor: 'center', align: 'center', color: '#fff',
+              font: { weight: 'bold' },
+              formatter: (value, ctx) => `${ctx.chart.data.datasets[ctx.datasetIndex].label}: ${value}`
+            }
+          },
+          scales: {
+            x: { stacked: true, max: total },
+            y: { stacked: true }
+          },
+          animation: { duration: 1000, easing: 'easeOutQuart' }
+        },
+        plugins: [ChartDataLabels]
+      });
+      tempoRestante.textContent = `Tempo médio restante: ${restante * 5} dias | Tempo decorrido: ${concluido * 5} dias`;
+      etapasLista.innerHTML = processo.etapas.map((etapa, i) => `<li style="color:${i < concluido ? '#00D000' : '#FF0000'}">${etapa}</li>`).join('');
+    }
+
+    function atualizarObjetivos() {
+      objetivoSelect.innerHTML = '';
+      Object.keys(objetivosEntregas).forEach(obj => {
+        const opt = document.createElement('option');
+        opt.value = obj;
+        opt.textContent = obj;
+        objetivoSelect.appendChild(opt);
+      });
+      atualizarEntregas();
+    }
+
+    function atualizarEntregas() {
+      const objetivo = objetivoSelect.value;
+      const entregas = objetivosEntregas[objetivo] || [];
+      entregaSelect.innerHTML = '';
+      entregas.forEach(ent => {
+        const opt = document.createElement('option');
+        opt.value = ent;
+        opt.textContent = ent;
+        entregaSelect.appendChild(opt);
+      });
+    }
+
+    unidadeSelect.addEventListener('change', atualizarTipos);
+    tipoSelect.addEventListener('change', atualizarProcessos);
+    processoSelect.addEventListener('change', desenharGrafico);
+    objetivoSelect.addEventListener('change', atualizarEntregas);
+    atualizarUnidades();
+    atualizarObjetivos();
   </script>
-  
 </body>
 </html>
