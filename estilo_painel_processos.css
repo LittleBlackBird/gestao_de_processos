@@ -15,7 +15,6 @@ body {
   border-radius: 8px;
 }
 
-
 .filtros {
   display: flex;
   flex-wrap: wrap;
@@ -114,7 +113,6 @@ canvas {
 .link-manual:hover {
   background-color: #002fbb;
 }
-
 
 @media screen and (max-width: 768px) {
   canvas {
