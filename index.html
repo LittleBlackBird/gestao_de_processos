@@ -77,7 +77,7 @@
       <div class="indicador" style="flex: 1;">
         <strong>Relação com Macroprocessos:</strong>
         <p>--</p>
-        <a href="#" class="link-manual">Acessar Manuais e Legislação</a>
+        <button class="link-manual">Acessar Manuais e Legislação</button>
       </div>
     </div>
   </div>
@@ -151,7 +151,7 @@
       let totalProcessos = 0;
       Object.values(estrutura).forEach(arr => totalProcessos += arr.length);
 
-      resumoUnidade.textContent = `${unidade} possui 5 servidores, ${totalTipos} tipos de processos e ${totalProcessos} processos individuais.`;
+      resumoUnidade.textContent = `${unidade} possui 5 servidores, ${totalTipos} tipos de processos e ${totalProcessos} processos individuais em andamento.`;
     }
 
     function desenharGrafico() {
@@ -195,7 +195,7 @@
         plugins: [ChartDataLabels]
       });
 
-      tempoRestante.textContent = `Tempo médio restante: ${restante * 5} dias`;
+      tempoRestante.textContent = `Tempo médio restante: ${restante * 5} dias | Tempo decorrido: ${concluido * 5} dias`;
       etapasLista.innerHTML = processo.etapas.map((etapa, i) => `<li style="color:${i < concluido ? '#00D000' : '#FF0000'}">${etapa}</li>`).join('');
     }
 
