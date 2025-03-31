@@ -119,30 +119,38 @@ canvas {
   background-color: #002fbb;
 }
 
-#etapas-lista {
-  list-style: none;
-  padding-left: 0;
+.snake-flow {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+  align-items: center;
   margin-top: 10px;
 }
 
-#etapas-lista li {
-  background-color: #ffffff;
-  border-left: 5px solid #183EFF;
+.etapa-box {
   padding: 10px 15px;
+  background-color: #e0ecff;
   border-radius: 6px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
   color: #183EFF;
   font-weight: 500;
-  flex: 1 1 auto;
-  min-width: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-#etapas-lista li.pendente {
-  border-left-color: #FF0000;
-  color: #FF0000;
+.etapa-box.concluida {
+  background-color: #d4f7d4;
+  color: #006400;
+}
+
+.etapa-box::after {
+  content: '→';
+  margin-left: 10px;
+  color: #999;
+}
+
+.etapa-box:last-child::after {
+  content: '';
 }
 
 @media screen and (max-width: 768px) {
