@@ -100,6 +100,22 @@ canvas {
   margin-bottom: 5px;
 }
 
+.link-manual {
+  background-color: #183EFF;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.link-manual:hover {
+  background-color: #002fbb;
+}
+
+
 @media screen and (max-width: 768px) {
   canvas {
     width: 90% !important;
