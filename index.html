@@ -15,10 +15,142 @@
   </div>
 
   <script>
-    const estrutura = /* JSON gerado com todas unidades, tipos e processos */;
-    const objetivosEntregas = /* JSON com relação de objetivos estratégicos e entregas prioritárias */;
+    const estrutura = /* estrutura JSON inserida aqui */;
+    const objetivosEntregas = /* objetivos JSON inserido aqui */;
 
     // lógica atualizada para lidar com estrutura por unidade
+
+const unidadeSelect = document.getElementById('unidade-select');
+const tipoSelect = document.getElementById('tipo-processo-select');
+const processoSelect = document.getElementById('processo-individual-select');
+const objetivoSelect = document.querySelector('select:nth-of-type(4)');
+const entregaSelect = document.querySelector('select:nth-of-type(5)');
+const ctx = document.getElementById('graficoProcesso').getContext('2d');
+const tempoRestante = document.getElementById('tempo-restante');
+const etapasLista = document.getElementById('etapas-lista');
+const resumoUnidade = document.getElementById('resumo-unidade');
+let chart;
+
+function atualizarUnidades() {
+  unidadeSelect.innerHTML = '';
+  Object.keys(estrutura).forEach(unidade => {
+    const opt = document.createElement('option');
+    opt.value = unidade;
+    opt.textContent = unidade;
+    unidadeSelect.appendChild(opt);
+  });
+  atualizarTipos();
+}
+
+function atualizarTipos() {
+  const unidade = unidadeSelect.value;
+  const tipos = Object.keys(estrutura[unidade] || {});
+  tipoSelect.innerHTML = '';
+  tipos.forEach(tipo => {
+    const opt = document.createElement('option');
+    opt.value = tipo;
+    opt.textContent = tipo;
+    tipoSelect.appendChild(opt);
+  });
+  atualizarProcessos();
+}
+
+function atualizarProcessos() {
+  const unidade = unidadeSelect.value;
+  const tipo = tipoSelect.value;
+  const processos = estrutura[unidade]?.[tipo] || [];
+  processoSelect.innerHTML = '';
+  processos.forEach((proc, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = proc.nome;
+    processoSelect.appendChild(opt);
+  });
+  desenharGrafico();
+  atualizarResumo();
+}
+
+function atualizarResumo() {
+  const unidade = unidadeSelect.value;
+  const tipos = Object.keys(estrutura[unidade] || {});
+  let totalProcessos = 0;
+  tipos.forEach(tipo => totalProcessos += estrutura[unidade][tipo].length);
+  resumoUnidade.textContent = `${unidade} possui 5 servidores, ${tipos.length} tipos de processos e ${totalProcessos} processos individuais em andamento.`;
+}
+
+function desenharGrafico() {
+  const unidade = unidadeSelect.value;
+  const tipo = tipoSelect.value;
+  const idx = processoSelect.value;
+  const processo = estrutura[unidade][tipo][idx];
+  const concluido = processo.concluidos;
+  const total = processo.etapas.length;
+  const restante = total - concluido;
+  const percent = ((concluido / total) * 100).toFixed(1);
+  if (chart) chart.destroy();
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Execução'],
+      datasets: [
+        { label: 'Concluído', data: [concluido], backgroundColor: '#00D000' },
+        { label: 'Pendente', data: [restante], backgroundColor: '#FF0000' }
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        title: { display: true, text: `${processo.nome} - Execução: ${percent}%` },
+        legend: { position: 'bottom' },
+        datalabels: {
+          anchor: 'center', align: 'center', color: '#fff',
+          font: { weight: 'bold' },
+          formatter: (value, ctx) => `${ctx.chart.data.datasets[ctx.datasetIndex].label}: ${value}`
+        }
+      },
+      scales: {
+        x: { stacked: true, max: total },
+        y: { stacked: true }
+      },
+      animation: { duration: 1000, easing: 'easeOutQuart' }
+    },
+    plugins: [ChartDataLabels]
+  });
+  tempoRestante.textContent = `Tempo médio restante: ${restante * 5} dias | Tempo decorrido: ${concluido * 5} dias`;
+  etapasLista.innerHTML = processo.etapas.map((etapa, i) => `<li style="color:${i < concluido ? '#00D000' : '#FF0000'}">${etapa}</li>`).join('');
+}
+
+function atualizarObjetivos() {
+  objetivoSelect.innerHTML = '';
+  Object.keys(objetivosEntregas).forEach(obj => {
+    const opt = document.createElement('option');
+    opt.value = obj;
+    opt.textContent = obj;
+    objetivoSelect.appendChild(opt);
+  });
+  atualizarEntregas();
+}
+
+function atualizarEntregas() {
+  const objetivo = objetivoSelect.value;
+  const entregas = objetivosEntregas[objetivo] || [];
+  entregaSelect.innerHTML = '';
+  entregas.forEach(ent => {
+    const opt = document.createElement('option');
+    opt.value = ent;
+    opt.textContent = ent;
+    entregaSelect.appendChild(opt);
+  });
+}
+
+unidadeSelect.addEventListener('change', atualizarTipos);
+tipoSelect.addEventListener('change', atualizarProcessos);
+processoSelect.addEventListener('change', desenharGrafico);
+objetivoSelect.addEventListener('change', atualizarEntregas);
+
+atualizarUnidades();
+atualizarObjetivos();
     // exibir unidades, tipos de processo por unidade, processos individuais etc.
   </script>
 </body>
