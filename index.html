@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de Gestão de Processos</title>
-  <link rel="stylesheet" href="estilo_painel_processos.css" />
+  <link rel="stylesheet" href="estilo_painel_processos.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
@@ -13,34 +13,45 @@
     <h1>Painel de Gestão de Processos</h1>
     <div class="filtros">
       <div>
-        <label for="unidade-select"><strong>Unidade:</strong></label>
+        <label for="unidade-select">Unidade:</label>
         <select id="unidade-select"></select>
       </div>
       <div>
-        <label for="tipo-processo-select"><strong>Tipo de Processo:</strong></label>
+        <label for="tipo-processo-select">Tipo de Processo:</label>
         <select id="tipo-processo-select"></select>
       </div>
       <div>
-        <label for="processo-individual-select"><strong>Processo Individual:</strong></label>
+        <label for="processo-individual-select">Processo Individual:</label>
         <select id="processo-individual-select"></select>
       </div>
     </div>
-
-    <div class="grafico-indicadores" style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
-      <div class="indicador" style="flex: 1; min-width: 280px">
+    <div class="grafico-indicadores" style="display: flex; gap: 20px; flex-wrap: wrap;">
+      <div class="indicador" style="flex: 1;">
         <strong>Indicadores do Processo:</strong>
         <p id="tempo-restante">Tempo médio restante: -- dias</p>
         <ul id="etapas-lista">Etapas:</ul>
       </div>
-      <div class="grafico-container" style="flex: 1; min-width: 280px">
+      <div class="grafico-container" style="flex: 1;">
         <canvas id="graficoProcesso"></canvas>
       </div>
-      <div class="indicador" style="flex: 1; min-width: 280px">
+      <div class="indicador" style="flex: 1;">
         <strong>Resumo da Unidade:</strong>
         <p id="resumo-unidade"></p>
       </div>
     </div>
-
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+      <div class="indicador" style="flex: 1;">
+        <strong>Relação com Macroprocessos:</strong>
+        <p>--</p>
+        <button class="link-manual">Acessar Manuais e Legislação</button>
+      </div>
+      <div class="indicador" style="flex: 1;">
+        <strong>Detalhes do Processo:</strong>
+        <p><strong>Sistema:</strong> <span id="campo-sistema">--</span></p>
+        <p><strong>Complexidade:</strong> <span id="campo-complexidade">--</span></p>
+        <p><strong>Código SEI:</strong> <span id="campo-codigo">--</span></p>
+      </div>
+    </div>
     <div class="indicador">
       <strong>Relação com Estratégia:</strong>
       <div class="estrategia">
@@ -54,21 +65,7 @@
         </div>
       </div>
     </div>
-
-    <div class="indicador">
-      <strong>Detalhes do Processo:</strong>
-      <p><strong>Complexidade:</strong> <span id="campo-complexidade">--</span></p>
-      <p><strong>Sistema:</strong> <span id="campo-sistema">--</span></p>
-      <p><strong>Código:</strong> <span id="campo-codigo">--</span></p>
-    </div>
-
-    <div class="indicador">
-      <strong>Relação com Macroprocessos:</strong>
-      <p>--</p>
-      <button class="link-manual">Acessar Manuais e Legislação</button>
-    </div>
   </div>
-
-  <script src="painel_script.js"></script>
+  <script src="painel_gestao_script.js"></script>
 </body>
 </html>
