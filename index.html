@@ -1,71 +1,256 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Painel de Gestão de Processos</title>
-  <link rel="stylesheet" href="estilo_painel_processos.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F0F4FA;
+      margin: 0;
+      padding: 0;
+      color: #3C3C3C;
+    }
+
+    .painel {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 30px;
+      background-color: #FFFFFF;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      border: 4px solid #183EFF33;
+    }
+
+    h1 {
+      color: white;
+      font-size: 1.8em;
+      margin: -30px -30px 30px -30px;
+      background-color: #183EFF;
+      padding: 20px 30px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #183EFF;
+      display: block;
+      margin-top: 20px;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      background-color: #FFFFFF;
+      color: #3C3C3C;
+    }
+
+    .indicador {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 6px;
+      background-color: #f4f7fc;
+    }
+
+    .indicador strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      color: #183EFF;
+    }
+
+    .grafico-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    #etapas-lista {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #etapas-lista li {
+      margin-bottom: 5px;
+    }
+  </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
   <div class="painel">
     <h1>Painel de Gestão de Processos</h1>
     <div class="filtros">
-      <div>
-        <label for="unidade-select">Unidade:</label>
+      <div style="flex: 1">
+        <label for="unidade-select">Unidade</label>
         <select id="unidade-select"></select>
       </div>
-      <div>
-        <label for="tipo-processo-select">Tipo de Processo:</label>
+      <div style="flex: 1">
+        <label for="tipo-processo-select">Tipo de Processo</label>
         <select id="tipo-processo-select"></select>
       </div>
-      <div>
-        <label for="processo-individual-select">Processo Individual:</label>
-        <select id="processo-individual-select"></select>
-      </div>
-    </div>
-    <div class="grafico-indicadores" style="display: flex; gap: 20px; flex-wrap: wrap;">
-      <div class="indicador" style="flex: 1;">
-        <strong>Indicadores do Processo:</strong>
-        <p id="tempo-restante">Tempo médio restante: -- dias</p>
-        <ul id="etapas-lista">Etapas:</ul>
-      </div>
-      <div class="grafico-container" style="flex: 1;">
-        <canvas id="graficoProcesso"></canvas>
-      </div>
-      <div class="indicador" style="flex: 1;">
-        <strong>Resumo da Unidade:</strong>
-        <p id="resumo-unidade"></p>
-      </div>
-    </div>
-    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-      <div class="indicador" style="flex: 1;">
-        <strong>Relação com Macroprocessos:</strong>
-        <p>--</p>
-        <button class="link-manual">Acessar Manuais e Legislação</button>
-      </div>
-      <div class="indicador" style="flex: 1;">
-        <strong>Detalhes do Processo:</strong>
-        <p><strong>Sistema:</strong> <span id="campo-sistema">--</span></p>
-        <p><strong>Complexidade:</strong> <span id="campo-complexidade">--</span></p>
-        <p><strong>Código SEI:</strong> <span id="campo-codigo">--</span></p>
+      <div style="flex: 1">
+        <label for="processo-select">Processo</label>
+        <select id="processo-select"></select>
       </div>
     </div>
     <div class="indicador">
-      <strong>Relação com Estratégia:</strong>
-      <div class="estrategia">
-        <div>
-          <label>Objetivo Estratégico:</label>
-          <select id="objetivo-select"></select>
-        </div>
-        <div>
-          <label>Entrega Prioritária:</label>
-          <select id="entrega-select"></select>
-        </div>
-      </div>
+      <strong>Resumo da Unidade</strong>
+      <p id="resumo-unidade">--</p>
+    </div>
+    <div class="indicador">
+      <strong>Etapas do Processo</strong>
+      <ul id="etapas-lista"></ul>
+    </div>
+    <div class="grafico-container">
+      <canvas id="graficoProcesso"></canvas>
     </div>
   </div>
-  <script src="painel_gestao_script.js"></script>
+
+  <script>
+    const estrutura = {
+      "Coordenação-Geral de Cultura": {
+        "Planejamento Estratégico": [
+          {
+            nome: "Planejamento 2025",
+            concluidos: 3,
+            etapas: [
+              "Diagnóstico institucional",
+              "Definição de metas",
+              "Aprovação da proposta",
+              "Publicação no SEI"
+            ],
+            complexidade: 6,
+            sistema: "SEI",
+            codigo: "01400.001111/2025-28"
+          }
+        ],
+        "Projetos Especiais": [
+          {
+            nome: "Implementação do SALIC",
+            concluidos: 2,
+            etapas: [
+              "Planejamento do escopo",
+              "Desenvolvimento",
+              "Testes",
+              "Treinamento dos usuários",
+              "Deploy"
+            ],
+            complexidade: 8,
+            sistema: "SALIC",
+            codigo: "01400.009999/2025-10"
+          }
+        ]
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const unidadeSelect = document.getElementById('unidade-select');
+      const tipoSelect = document.getElementById('tipo-processo-select');
+      const processoSelect = document.getElementById('processo-select');
+      const resumo = document.getElementById('resumo-unidade');
+      const etapasLista = document.getElementById('etapas-lista');
+      const ctx = document.getElementById('graficoProcesso').getContext('2d');
+      let grafico;
+
+      function carregarUnidades() {
+        unidadeSelect.innerHTML = '';
+        for (const unidade in estrutura) {
+          const opt = document.createElement('option');
+          opt.value = unidade;
+          opt.textContent = unidade;
+          unidadeSelect.appendChild(opt);
+        }
+        carregarTipos();
+      }
+
+      function carregarTipos() {
+        tipoSelect.innerHTML = '';
+        const unidade = unidadeSelect.value;
+        for (const tipo in estrutura[unidade]) {
+          const opt = document.createElement('option');
+          opt.value = tipo;
+          opt.textContent = tipo;
+          tipoSelect.appendChild(opt);
+        }
+        carregarProcessos();
+      }
+
+      function carregarProcessos() {
+        processoSelect.innerHTML = '';
+        const unidade = unidadeSelect.value;
+        const tipo = tipoSelect.value;
+        const processos = estrutura[unidade][tipo];
+        processos.forEach((proc, idx) => {
+          const opt = document.createElement('option');
+          opt.value = idx;
+          opt.textContent = proc.nome;
+          processoSelect.appendChild(opt);
+        });
+        atualizarPainel();
+      }
+
+      function atualizarPainel() {
+        const unidade = unidadeSelect.value;
+        const tipo = tipoSelect.value;
+        const processo = estrutura[unidade][tipo][processoSelect.value];
+
+        resumo.textContent = `
+          Sistema: ${processo.sistema} | 
+          Código: ${processo.codigo} | 
+          Complexidade: ${processo.complexidade}/10
+        `;
+
+        etapasLista.innerHTML = processo.etapas.map((etapa, i) =>
+          `<li style="color: ${i < processo.concluidos ? '#00D000' : '#FF0000'}">${etapa}</li>`
+        ).join('');
+
+        if (grafico) grafico.destroy();
+        grafico = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Concluído', 'Pendente'],
+            datasets: [{
+              label: 'Etapas',
+              data: [processo.concluidos, processo.etapas.length - processo.concluidos],
+              backgroundColor: ['#00D000', '#FF0000']
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: { display: true, text: processo.nome }
+            }
+          }
+        });
+      }
+
+      unidadeSelect.addEventListener('change', carregarTipos);
+      tipoSelect.addEventListener('change', carregarProcessos);
+      processoSelect.addEventListener('change', atualizarPainel);
+
+      carregarUnidades();
+    });
+  </script>
 </body>
 </html>
