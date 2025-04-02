@@ -1,0 +1,28 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(145deg, #f0f8ff, #dfe7fd);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabecalho {
+  background: #004080;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.painel {
+  flex: 1;
+  padding: 2rem;
+  background-image: url('https://www.gov.br/pt-br/identidade-visual/imagens/padrao-govbr.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
